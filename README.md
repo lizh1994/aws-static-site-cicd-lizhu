@@ -29,7 +29,6 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
     - Write logs to CloudWatch.
     - Create build reports.
   - **Purpose:** Ensures CodeBuild can update the deployed site but cannot accidentally delete intermediate pipeline artifacts.  
-  - **Summary:** `CodeBuild → Sync to deploy S3 (with DeleteObject) + write logs.`
 
 - **CodePipeline Role**
   - **Permissions:**
@@ -38,7 +37,6 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
     - Start CodeBuild projects.
     - Deploy artifacts to the target S3 bucket.
   - **Purpose:** CI/CD orchestrator with just enough access to fetch, build, and deploy.  
-  - **Summary:** `CodePipeline → Orchestrates stages: fetch GitHub, trigger CodeBuild, deploy to S3.`
 
 ---
 
