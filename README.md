@@ -61,17 +61,47 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
 
 ## 📸 Project Showcase
 
-![Static Site UI](screenshots/Web UI.png)  
+### Site UI
+
+![Web UI](screenshots/WebUI.png)  
 *Static site homepage hosted on S3 + CloudFront.*
 
-![CI/CD Pipeline Success](screenshots/pipeline-success.png)  
+### CI/CD Pipeline
+
+![CI/CD Pipeline Success](screenshots/Deploy.png)  
 *CodePipeline execution completed successfully.*
 
-![Deployment Alert](screenshots/deployment-alert.png)  
+### Pipeline Failure Notification
+
+![Deployment Failure](screenshots/DeploymentFailure.png)  
+
+![Deployment Alert](screenshots/FailureNotification.png)
+
 *CloudWatch + SNS sending email on deployment failure.* 
 
 ⚠️ *All AWS resources were deleted after completion to avoid extra cost, so no live demo link is available.*  
 
 ---
 
-## 🚀 Quick Start
+### Quick Start
+
+1. Download the repository as a ZIP file:  
+   [Download Link](https://github.com/lizh1994/aws-static-site-cicd-lizhu/archive/refs/heads/main.zip)
+2. Unzip the file to your local machine.
+3. Navigate to `/src` to access the project source files (`index.html`, images, etc.).
+4. Refer to `/docs` for detailed documentation.
+
+*Detailed instructions are available in ![Deployment Alert]
+
+---
+
+## 💡 Lessons Learned
+
+1. Least Privilege IAM
+Practicing least privilege caused multiple deployment failures at first, but gave me a deeper understanding of permission boundaries.
+
+2. Troubleshooting Skills
+CI/CD failures required me to trace logs, identify missing configs, and iterate fixes—building confidence in debugging cloud pipelines.
+
+3. Service Interactions
+Learned the importance of explicit artifact passing between stages. For example, a missing build artifact in CodeBuild blocked deployment until I correctly configured artifact outputs.
