@@ -96,10 +96,13 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
 ## 💡 Lessons Learned
 
 1. Least Privilege IAM
+
 Practicing least privilege caused multiple deployment failures at first, but gave me a deeper understanding of permission boundaries.
 
 2. Troubleshooting Skills
+
 CI/CD failures required me to trace logs, identify missing configs, and iterate fixes—building confidence in debugging cloud pipelines.
 
 3. Service Interactions
+
 Learned the importance of explicit artifact passing between stages. For example, a missing build artifact in CodeBuild blocked deployment until I correctly configured artifact outputs.
