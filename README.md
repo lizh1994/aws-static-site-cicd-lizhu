@@ -2,7 +2,7 @@
 
 A fully automated GitHub → AWS CI/CD pipeline for hosting a static site with CloudFront Functions, S3 Versioning, and Least Privilege IAM policies. This project demonstrates building and deploying a static website with real-time alerts and secure deployment.
 
-🛠 Key Features
+🛠 Key Features：
 
 GitHub → AWS CI/CD Integration — Fully automated static site deployment pipeline.
 
@@ -16,7 +16,7 @@ CodeBuild Integration — Executes buildspec tasks to sync website files.
 
 CloudWatch + SNS Alerts — Proactive failure notifications for deployments.
 
-🔐 IAM Roles & Least Privilege Principle
+🔐 IAM Roles & Least Privilege Principle：
 
 This project applies least privilege IAM policies to ensure secure CI/CD operations.
 
