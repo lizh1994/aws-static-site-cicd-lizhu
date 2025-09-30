@@ -2,7 +2,7 @@
 
 A fully automated GitHub → AWS CI/CD pipeline for hosting a static site with CloudFront Functions, S3 Versioning, and Least Privilege IAM policies. This project demonstrates building and deploying a static website with real-time alerts and secure deployment.
 
-🛠 Key Features：
+## 🛠 Key Features
 
 GitHub → AWS CI/CD Integration — Fully automated static site deployment pipeline.
 
@@ -16,52 +16,62 @@ CodeBuild Integration — Executes buildspec tasks to sync website files.
 
 CloudWatch + SNS Alerts — Proactive failure notifications for deployments.
 
-🔐 IAM Roles & Least Privilege Principle：
+---
+
+## 🔐 IAM Roles & Least Privilege Principle
 
 This project applies least privilege IAM policies to ensure secure CI/CD operations.
 
-CodeBuild Role
+- **CodeBuild Role**
+  - **Permissions:**
+    - Read/Write artifacts in pipeline S3 bucket (no delete).
+    - Full sync (Get/Put/Delete/List) on deploy S3 bucket.
+    - Write logs to CloudWatch.
+    - Create build reports.
+  - **Purpose:** Ensures CodeBuild can update the deployed site but cannot accidentally delete intermediate pipeline artifacts.  
+  - **Summary:** `CodeBuild → Sync to deploy S3 (with DeleteObject) + write logs.`
 
-Permissions:
+- **CodePipeline Role**
+  - **Permissions:**
+    - Access artifacts in pipeline bucket.
+    - Use GitHub connection via CodeStar Connections.
+    - Start CodeBuild projects.
+    - Deploy artifacts to the target S3 bucket.
+  - **Purpose:** CI/CD orchestrator with just enough access to fetch, build, and deploy.  
+  - **Summary:** `CodePipeline → Orchestrates stages: fetch GitHub, trigger CodeBuild, deploy to S3.`
 
-Read/Write artifacts in pipeline S3 bucket (no delete).
+---
 
-Full sync (Get/Put/Delete/List) on deploy S3 bucket.
+## ✨ Additional Enhancements
 
-Write logs to CloudWatch.
+- **CloudFront Functions**  
+  Path rewrite, simple access control, and cache optimization.  
 
-Create build reports.
+- **S3 Versioning**  
+  Automatic version tracking for static site assets.  
 
-Purpose: Ensures CodeBuild can update the deployed site but cannot accidentally delete intermediate pipeline artifacts.
+- **CloudWatch + SNS**  
+  Real-time failure alerting.  
 
-Summary: “CodeBuild → Sync to deploy S3 (with DeleteObject) + write logs.”
+---
 
-CodePipeline Role
+## 📊 Architecture Diagram
 
-Permissions:
+![Architecture Diagram](docs/AWS-StaticSite.drawio.png)
 
-Access artifacts in pipeline bucket.
+## 📸 Project Showcase
 
-Use GitHub connection via CodeStar Connections.
+![Static Site UI](screenshots/Web UI.png)  
+*Static site homepage hosted on S3 + CloudFront.*
 
-Start CodeBuild projects.
+![CI/CD Pipeline Success](screenshots/pipeline-success.png)  
+*CodePipeline execution completed successfully.*
 
-Deploy artifacts to the target S3 bucket.
+![Deployment Alert](screenshots/deployment-alert.png)  
+*CloudWatch + SNS sending email on deployment failure.* 
 
-Purpose: CI/CD orchestrator with just enough access to fetch, build, and deploy.
+⚠️ *All AWS resources were deleted after completion to avoid extra cost, so no live demo link is available.*  
 
-Summary: “CodePipeline → Orchestrates stages: fetch GitHub, trigger CodeBuild, deploy to S3.”
+---
 
-CloudFront Functions
-
-Summary: “Path rewrite + access control + cache optimization.”
-
-S3 Versioning
-
-Summary: “Automatic version tracking for static site assets.”
-
-CloudWatch + SNS
-
-Summary: “Real-time failure alerting.”
-
-📊 Architecture Diagram
+## 🚀 Quick Start
