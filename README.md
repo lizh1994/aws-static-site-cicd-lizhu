@@ -53,6 +53,13 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
 
 ---
 
+💡 Coordination with S3 Bucket Policy
+While the deploy bucket’s policy only allows public `GetObject` for website visitors, the CodeBuild IAM role has broader permissions (write, delete, list).  
+
+This separation ensures **visitors can only read**, while **the pipeline can fully manage deployments**.
+
+---
+
 ## 📊 Architecture Diagram
 
 ![Architecture Diagram](docs/AWS-StaticSite.drawio.png)
@@ -93,16 +100,12 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
 
 ---
 
-## 💡 Lessons Learned
+## 🎯 Lessons Learned
 
-1. Least Privilege IAM
+1. IAM Permissions: Learned to balance least privilege with task feasibility. Many failures came from missing permissions, which pushed me to clarify the exact boundaries of each role.
 
-Practicing least privilege caused multiple deployment failures at first, but gave me a deeper understanding of permission boundaries.
+2. Troubleshooting: Developed the habit of checking error logs first and fixing issues systematically instead of guessing.
 
-2. Troubleshooting Skills
+3. Service Interactions: Realized the importance of mapping how services pass data. For example, forgetting build artifact output caused repeated deploy failures until I fixed the build stage.
 
-CI/CD failures required me to trace logs, identify missing configs, and iterate fixes—building confidence in debugging cloud pipelines.
-
-3. Service Interactions
-
-Learned the importance of explicit artifact passing between stages. For example, a missing build artifact in CodeBuild blocked deployment until I correctly configured artifact outputs.
+### Key takeaway: Hands-on practice, combined with a problem-solving mindset, is the most effective way to learn AWS.
