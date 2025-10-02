@@ -12,7 +12,7 @@ S3 Versioning — Automatic version tracking for static assets.
 
 IAM Least Privilege — Fine-grained IAM policies to secure the CI/CD pipeline.
 
-CodeBuild Integration — Executes buildspec tasks to sync website files.
+CodeBuild Integration — Executes build commands to sync website files.
 
 CloudWatch + SNS Alerts — Proactive failure notifications for deployments.
 
@@ -53,7 +53,8 @@ This project applies least privilege IAM policies to ensure secure CI/CD operati
 
 ---
 
-💡 Coordination with S3 Bucket Policy
+## 💡 Coordination with S3 Bucket Policy
+
 While the deploy bucket’s policy only allows public `GetObject` for website visitors, the CodeBuild IAM role has broader permissions (write, delete, list).  
 
 This separation ensures **visitors can only read**, while **the pipeline can fully manage deployments**.
@@ -62,7 +63,7 @@ This separation ensures **visitors can only read**, while **the pipeline can ful
 
 ## 📊 Architecture Diagram
 
-![Architecture Diagram](docs/AWS-StaticSite.drawio.png)
+![Architecture Diagram](docs/AWS-Static-Site.drawio.png)
 
 ## 📸 Project Showcase
 
