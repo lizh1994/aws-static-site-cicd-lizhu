@@ -97,7 +97,7 @@ This separation ensures **visitors can only read**, while **the pipeline can ful
 3. Navigate to `/src` to access the project source files (`index.html`, images, etc.).
 4. Refer to `/docs` for detailed documentation.
 
-*Detailed instructions are available in ![Deployment Alert]
+*Detailed instructions are available in ![Project Documentation](docs/ProjectDocumentation.pdf)
 
 ---
 
